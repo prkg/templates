@@ -24,6 +24,32 @@
               (_: { nativeLibs = with pkgs; [ SDL2_image ]; });
             sdl2-ttf = pkgs.sbclPackages.sdl2-ttf.overrideLispAttrs
               (_: { nativeLibs = with pkgs; [ SDL2_ttf ]; });
+            glu-tessellate = pkgs.sbclPackages.glu-tessellate.overrideLispAttrs
+              (_: { nativeLibs = with pkgs; [ libGLU ]; });
+            sketch = super.sketch.overrideLispAttrs (oldAttrs: {
+              src = pkgs.fetchFromGitHub {
+                owner = "vydd";
+                repo = "sketch";
+                rev = "master";
+                hash = "sha256-1C6MstqZPohQQ9+e7fisSwkGxSYcNA01mfNzJZakAK8=";
+              };
+              lispLibs = with super; [
+                closer-mop
+                glkit
+                self.glu-tessellate
+                mathkit
+                md
+                self.sdl2
+                cl-plus-c
+                self.sdl2-image
+                self.sdl2-ttf
+                sdl2kit
+                split-sequence
+                static-vectors
+                trivial-garbage
+                zpng
+              ];
+            });
           });
 
         in pkgs.mkShell {
