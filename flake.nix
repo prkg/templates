@@ -5,9 +5,19 @@
 
     templates = {
 
-      trivial = {
-        path = ./trivial;
-        description = "A very basic flake";
+      "simple" = {
+        path = ./simple;
+        description = "A simple flake";
+      };
+
+      "c" = {
+        path = ./c/simple;
+        description = "Simple C project";
+      };
+
+      "lisp" = {
+        path = ./lisp/simple;
+        description = "Simple SBCL project";
       };
 
       "lisp/sketch" = {
