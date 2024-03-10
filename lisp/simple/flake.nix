@@ -1,7 +1,7 @@
 {
   description = "simple sbcl project template";
   inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; };
-  outputs = { self, nixpkgs, cl-libical }:
+  outputs = { self, nixpkgs }:
     let
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" ];
       forAllSystems = f:
