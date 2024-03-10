@@ -1,5 +1,5 @@
 {
-  description = "basic project";
+  description = "simple c project template";
   inputs = { nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; };
   outputs = { self, nixpkgs }:
     let
@@ -14,11 +14,23 @@
     in {
       overlay = final: prev: { };
       devShell = forAllSystems (system:
-        let
-          pkgs = nixpkgsFor.${system};
+        let pkgs = nixpkgsFor.${system};
         in pkgs.mkShell {
-          buildInputs = with pkgs;
-            [  ];
+          buildInputs = with pkgs; [
+            gcc
+            pkg-config
+            m4
+            libtool
+            gnumake
+            automake
+            cmake
+            autoconf
+            checkmake
+            ccls
+            valgrind
+            cbmc
+            afl
+          ];
           shellHook = ''
             set -a
             set +a
